@@ -22,119 +22,162 @@ class DetailsPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xff171717),
-        body: Stack(
-          children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: SizedBox(
                   height: height * 0.33,
-                width: width,
-                child: Image.network(newsModel!.articles[selectedIndex].urlToImage),
+                  width: width,
+                  child: Image.network(
+                      newsModel!.articles[selectedIndex].urlToImage),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(18, height * 0.2655, 18, 0),
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(18),
-                    decoration: BoxDecoration(
-                        color: const Color(0xff171717),
-                        border: Border.all(color: Colors.white, width: 2.5)),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          newsModel!.articles[selectedIndex].title,
-                          style: TextStyle(
-                              fontSize: width * 0.048,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Date : $date'),
-                                Text('Published At : $time'),
-                              ],
-                            ),
-                            Text(
-                              newsModel!.articles[selectedIndex].source.name,
-                              style: TextStyle(
-                                  fontSize: width * 0.025, color: Colors.white),
-                            ) //86607fe243bf43e4867398998bc175d3
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  Expanded(
-                    child: SingleChildScrollView(
+              Padding(
+                padding: EdgeInsets.fromLTRB(18, height * 0.2655, 18, 0),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(18),
+                      decoration: BoxDecoration(
+                          color: const Color(0xff171717),
+                          border: Border.all(color: Colors.white, width: 2.5)),
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            newsModel!.articles[selectedIndex].title,
+                            style: TextStyle(
+                                fontSize: width * 0.048,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(
-                                child: Text(
-                                  'Author : ${newsModel!.articles[selectedIndex].author}',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: width * 0.042),
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Date : $date'),
+                                  Text('Published At : $time'),
+                                ],
                               ),
-                              GestureDetector(
-                                onTap: (){
-                                  newsController.launchNewsPage(newsModel);
-                                },
+                              Text(
+                                newsModel!.articles[selectedIndex].source.name,
+                                style: TextStyle(
+                                    fontSize: width * 0.025, color: Colors.white),
+                              ) //86607fe243bf43e4867398998bc175d3
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Author : ${newsModel!.articles[selectedIndex].author}',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: width * 0.042),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                newsController.launchNewsPage(newsModel);
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.only(right: width * 0.04),
                                 child: Text(
-                                  'Read More',//→
+                                  'Read More',
                                   style: TextStyle(
                                       color: Colors.lightBlue,
                                       fontWeight: FontWeight.w500,
                                       fontSize: width * 0.042),
                                 ),
                               ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 15),
+                        Text(
+                          newsModel!.articles[selectedIndex].description,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: width * 0.04,
+                            // color: Colors.white
+                          ),
+                        ),
+                        const SizedBox(height: 13),
+                        Text(
+                          newsModel!.articles[selectedIndex].content,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: width * 0.04,
+                            // color: Colors.white
+                          ),
+                        ),
+                        const SizedBox(height: 13),
+                        Divider(color: Colors.grey.shade500),
+                        const SizedBox(height: 13),
+                        Container(
+                          height: height * 0.056,
+                          width: width,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white),
+                          child: Text(
+                            'Start Commenting',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: width * 0.04,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                        const SizedBox(height: 11),
+                        Container(
+                          height: height * 0.056,
+                          width: width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.white),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Repost',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: width * 0.04,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              Icon(
+                                Icons.autorenew,
+                                color: Colors.white,
+                              )
                             ],
                           ),
-                          const SizedBox(height: 15),
-                          Text(
-                            newsModel!.articles[selectedIndex].description,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: width * 0.04,
-                              // color: Colors.white
-                            ),
-                          ),
-                          const SizedBox(height: 13),
-                          Text(
-                            newsModel!.articles[selectedIndex].content,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: width * 0.04,
-                              // color: Colors.white
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  )
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {},
                   icon: const Icon(Icons.notification_add_outlined,color: Colors.white,))
             ],
-            title: const Text("Daily Hunt",style: TextStyle(color: Colors.white),),
+            title: const Text("ARC News",style: TextStyle(color: Colors.white),),
             bottom: const TabBar(
               tabAlignment: TabAlignment.start,
                 padding: EdgeInsets.zero,
@@ -43,40 +43,39 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   color: Colors.grey,
                 ),
-                // labelColor: Colors.black,
                 unselectedLabelColor: Colors.grey,
                 isScrollable: true,
                 tabs: [
                   Tab(
                       child: Row(
-                    children: [Icon(Icons.apple), Text(' Apple Company')],
+                    children: [Icon(Icons.apple), Text(' Apple')],
                   )),
                   Tab(
                       child: Row(
                     children: [
                       Icon(Icons.car_rental_outlined),
-                      Text(' Tesla Company')
+                      Text(' Tesla')
                     ],
                   )),
                   Tab(
                       child: Row(
                     children: [
                       Icon(Icons.credit_card),
-                      Text(' Business  Company')
+                      Text(' Business')
                     ],
                   )),
                   Tab(
                       child: Row(
                     children: [
                       Icon(Icons.developer_board),
-                      Text(' TechCrunch Company')
+                      Text(' Technology')
                     ],
                   )),
                   Tab(
                       child: Row(
                                           children: [
                       Icon(Icons.mark_as_unread),
-                      Text(' Articles Company')
+                      Text(' Articles')
                                           ],
                                         )),
                 ]),
@@ -90,7 +89,7 @@ class HomePage extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       NewsModel? newsModel = snapshot.data;
-                      newsController.generateRandomList(newsModel!.articles.length);
+                      newsController.generateRandomList(400);
                       return SingleChildScrollView(
                         child: Column(
                           children: [
@@ -174,6 +173,7 @@ class HomePage extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       NewsModel? newsModel = snapshot.data;
+                      newsController.generateRandomList(newsModel!.articles.length);
                       return SingleChildScrollView(
                         child: Column(
                           children: [
@@ -193,7 +193,7 @@ class HomePage extends StatelessWidget {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             height: height * 0.29,
                                             width: width,
                                             child: Image.network(
@@ -207,9 +207,6 @@ class HomePage extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
-                                          // Text(newsModel.articles[index].author),
-                                          // Text(newsModel.articles[index].description),
-                                          // Text(newsModel.articles[index].content),
                                           const SizedBox(height: 10),
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -222,8 +219,10 @@ class HomePage extends StatelessWidget {
                                                 ],
                                               ),
                                               Row(
+                                                mainAxisSize: MainAxisSize.min,
                                                 children: [
-                                                  IconButton(onPressed: (){}, icon: Icon(Icons.favorite_outline_rounded,color: Colors.white,size: width *0.063,)),
+                                                  Image.asset('assets/whatsapp.png',height: width *0.063,color: const Color(0xffA1A1A1),),
+                                                  Text('  ${newsController.randomList[index]}'.toString(),style: const TextStyle(color: Color(0xffA1A1A1)),),
                                                   const SizedBox(width: 10),
                                                   IconButton(onPressed: (){}, icon: Icon(Icons.more_vert,color: Colors.white,size: width *0.063,)),
                                                 ],
@@ -233,9 +232,6 @@ class HomePage extends StatelessWidget {
                                           const SizedBox(height: 15),
                                           Divider(color:Colors.grey.shade500),
                                           const SizedBox(height: 20),
-                                          // Text(newsModel.articles[index].source.id),
-                                          // Text(newsModel.articles[index].source.name),
-
                                         ],
                                       ),
                                     ),
@@ -261,6 +257,7 @@ class HomePage extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       NewsModel? newsModel = snapshot.data;
+                      newsController.generateRandomList(newsModel!.articles.length);
                       return SingleChildScrollView(
                         child: Column(
                           children: [
@@ -280,7 +277,7 @@ class HomePage extends StatelessWidget {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             height: height * 0.29,
                                             width: width,
                                             child: Image.network(
@@ -294,9 +291,6 @@ class HomePage extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
-                                          // Text(newsModel.articles[index].author),
-                                          // Text(newsModel.articles[index].description),
-                                          // Text(newsModel.articles[index].content),
                                           const SizedBox(height: 10),
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -309,8 +303,10 @@ class HomePage extends StatelessWidget {
                                                 ],
                                               ),
                                               Row(
+                                                mainAxisSize: MainAxisSize.min,
                                                 children: [
-                                                  IconButton(onPressed: (){}, icon: Icon(Icons.favorite_outline_rounded,color: Colors.white,size: width *0.063,)),
+                                                  Image.asset('assets/whatsapp.png',height: width *0.063,color: const Color(0xffA1A1A1),),
+                                                  Text('  ${newsController.randomList[index]}'.toString(),style: const TextStyle(color: Color(0xffA1A1A1)),),
                                                   const SizedBox(width: 10),
                                                   IconButton(onPressed: (){}, icon: Icon(Icons.more_vert,color: Colors.white,size: width *0.063,)),
                                                 ],
@@ -320,9 +316,6 @@ class HomePage extends StatelessWidget {
                                           const SizedBox(height: 15),
                                           Divider(color:Colors.grey.shade500),
                                           const SizedBox(height: 20),
-                                          // Text(newsModel.articles[index].source.id),
-                                          // Text(newsModel.articles[index].source.name),
-
                                         ],
                                       ),
                                     ),
@@ -348,6 +341,7 @@ class HomePage extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       NewsModel? newsModel = snapshot.data;
+                      newsController.generateRandomList(newsModel!.articles.length);
                       return SingleChildScrollView(
                         child: Column(
                           children: [
@@ -367,7 +361,7 @@ class HomePage extends StatelessWidget {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             height: height * 0.29,
                                             width: width,
                                             child: Image.network(
@@ -381,9 +375,6 @@ class HomePage extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
-                                          // Text(newsModel.articles[index].author),
-                                          // Text(newsModel.articles[index].description),
-                                          // Text(newsModel.articles[index].content),
                                           const SizedBox(height: 10),
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -396,8 +387,10 @@ class HomePage extends StatelessWidget {
                                                 ],
                                               ),
                                               Row(
+                                                mainAxisSize: MainAxisSize.min,
                                                 children: [
-                                                  IconButton(onPressed: (){}, icon: Icon(Icons.favorite_outline_rounded,color: Colors.white,size: width *0.063,)),
+                                                  Image.asset('assets/whatsapp.png',height: width *0.063,color: const Color(0xffA1A1A1),),
+                                                  Text('  ${newsController.randomList[index]}'.toString(),style: const TextStyle(color: Color(0xffA1A1A1)),),
                                                   const SizedBox(width: 10),
                                                   IconButton(onPressed: (){}, icon: Icon(Icons.more_vert,color: Colors.white,size: width *0.063,)),
                                                 ],
@@ -407,9 +400,6 @@ class HomePage extends StatelessWidget {
                                           const SizedBox(height: 15),
                                           Divider(color:Colors.grey.shade500),
                                           const SizedBox(height: 20),
-                                          // Text(newsModel.articles[index].source.id),
-                                          // Text(newsModel.articles[index].source.name),
-
                                         ],
                                       ),
                                     ),
@@ -435,6 +425,7 @@ class HomePage extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       NewsModel? newsModel = snapshot.data;
+                      newsController.generateRandomList(newsModel!.articles.length);
                       return SingleChildScrollView(
                         child: Column(
                           children: [
@@ -454,7 +445,7 @@ class HomePage extends StatelessWidget {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             height: height * 0.29,
                                             width: width,
                                             child: Image.network(
@@ -468,9 +459,6 @@ class HomePage extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white),
                                           ),
-                                          // Text(newsModel.articles[index].author),
-                                          // Text(newsModel.articles[index].description),
-                                          // Text(newsModel.articles[index].content),
                                           const SizedBox(height: 10),
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -483,8 +471,10 @@ class HomePage extends StatelessWidget {
                                                 ],
                                               ),
                                               Row(
+                                                mainAxisSize: MainAxisSize.min,
                                                 children: [
-                                                  IconButton(onPressed: (){}, icon: Icon(Icons.favorite_outline_rounded,color: Colors.white,size: width *0.063,)),
+                                                  Image.asset('assets/whatsapp.png',height: width *0.063,color: const Color(0xffA1A1A1),),
+                                                  Text('  ${newsController.randomList[index]}'.toString(),style: const TextStyle(color: Color(0xffA1A1A1)),),
                                                   const SizedBox(width: 10),
                                                   IconButton(onPressed: (){}, icon: Icon(Icons.more_vert,color: Colors.white,size: width *0.063,)),
                                                 ],
@@ -494,9 +484,6 @@ class HomePage extends StatelessWidget {
                                           const SizedBox(height: 15),
                                           Divider(color:Colors.grey.shade500),
                                           const SizedBox(height: 20),
-                                          // Text(newsModel.articles[index].source.id),
-                                          // Text(newsModel.articles[index].source.name),
-
                                         ],
                                       ),
                                     ),

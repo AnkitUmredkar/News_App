@@ -37,8 +37,7 @@ class Articles {
         author: m1['author'] ?? 'hello',
         title: m1['title'] ?? 'hello',
         description: m1['description'] ??  'Major tech companies, including those in Silicon Valley, are continuing to downsize as they adjust to post-pandemic economic conditions. Layoffs are part of broader cost-cutting measures as the industry faces slowing revenue growth.',
-        urlToImage: m1['urlToImage'] ??
-            'https://www.presse-citron.net/app/uploads/2024/07/bangyu-wang-omoCm0bvNW4-unsplash-1-1.jpg',
+        urlToImage: (m1['urlToImage'] == null || m1['urlToImage'] == "") ? 'https://www.presse-citron.net/app/uploads/2024/07/bangyu-wang-omoCm0bvNW4-unsplash-1-1.jpg' : m1['urlToImage'],
         publishedAt: m1['publishedAt'] ?? '2024-08-12T15:17:57Z',
         content: m1['content'] ?? "If you click 'Accept all', we and our partners, including 237 who are part of the IAB Transparency &amp; Consent Framework, will also store and/or access information on a device (in other words, use … [+678 chars]",
         source: Source.fromJson(m1['source']), url: m1['url'] ?? 'https://apnews.com/article/stocks-markets-rates-inflation-0556bf2130a2f6eee478e100d1525045');

@@ -8,7 +8,6 @@ import 'package:url_launcher/url_launcher.dart';
 class NewsController extends GetxController{
   NewsModel? newsModel;
   List randomList = [];
-  Random random = Random();
 
   Future<NewsModel?> appleCmpData() async {
     final data = await  NewsApi.newsApi.fetchAppleCmpApiData();
@@ -46,7 +45,9 @@ class NewsController extends GetxController{
   }
 
   void generateRandomList(int length){
+    randomList.clear();
     for(int i=0; i<length+1; i++){
+      Random random = Random();
       int a = random.nextInt(length);
       randomList.add(a);
     }
